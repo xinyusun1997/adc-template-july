@@ -1,10 +1,10 @@
 resource "google_storage_bucket" "gcs_bucket" {
-  name                        = var.bucket_name
+  name                        = "${var.tenant_project_id}-scm-repo${var.tenant_project_number}"
   project                     = var.tenant_project_number
   location                    = var.location
   storage_class               = var.storage_class
   uniform_bucket_level_access = true
-  force_destroy               = true
+  public_access_prevention    = "enforced"
 
   lifecycle_rule {
     action {

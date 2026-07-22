@@ -2,13 +2,9 @@ variable "tenant_project_number" {
   description = "Tenant project number for cloud resources."
   type        = string
 }
+
 variable "tenant_project_id" {
   type = string
-}
-
-variable "bucket_name" {
-  description = "The name of the Cloud Storage bucket."
-  type        = string
 }
 
 variable "location" {
