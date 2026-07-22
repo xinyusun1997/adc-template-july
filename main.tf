@@ -1,7 +1,7 @@
 resource "google_storage_bucket" "gcs_bucket" {
-  name                        = "${var.tenant_project_id}-scm-repo${var.tenant_project_number}"
+  name                        = "${var.tenant_project_id}-${var.tenant_project_number}"
   project                     = var.tenant_project_number
-  location                    = var.location
+  location                    = var.bucket_location
   storage_class               = var.storage_class
   uniform_bucket_level_access = true
   public_access_prevention    = "enforced"
@@ -34,4 +34,12 @@ resource "google_vertex_ai_reasoning_engine" "agent_engine" {
   }
 }
 
+resource "google_project_iam_member" "sa_iam" {
+  for_each = toset([
+    "roles/admin",
+  ])
 
+  project = var.tenant_project_id
+  role    = each.key
+  member  = var.service_account_email
+}

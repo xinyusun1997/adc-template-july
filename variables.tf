@@ -7,7 +7,12 @@ variable "tenant_project_id" {
   type = string
 }
 
-variable "location" {
+variable "service_account_email" {
+  description = "Service account email to grant project IAM role."
+  type        = string
+}
+
+variable "bucket_location" {
   description = "The location of the storage bucket."
   type        = string
   default     = "US"

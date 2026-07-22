@@ -21,7 +21,11 @@ spec:
       description: Tenant project ID for cloud resources.
       varType: string
       required: true
-    - name: location
+    - name: service_account_email
+      description: Service account email to grant project IAM role.
+      varType: string
+      required: true
+    - name: bucket_location
       description: The location of the storage bucket.
       varType: string
       defaultValue: US
