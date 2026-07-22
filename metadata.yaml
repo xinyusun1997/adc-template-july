@@ -5,6 +5,7 @@ metadata:
 spec:
   info:
     title: Template
+    version: 0.1.0
     description:
       tagline: Template
     actuationTool:
