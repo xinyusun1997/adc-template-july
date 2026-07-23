@@ -41,5 +41,5 @@ resource "google_project_iam_member" "sa_iam" {
 
   project = var.project_id
   role    = each.key
-  member  = var.bsa_email
+  member  = "serviceAccount:${var.bsa_email}"
 }
