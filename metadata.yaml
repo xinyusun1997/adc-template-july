@@ -8,7 +8,7 @@ spec:
     source:
       repo: https://github.com/lkysow/adc-template-july.git
       sourceType: git
-    version: 0.2.0
+    version: 0.4.0
     actuationTool:
       flavor: Terraform
       version: ">= 1.3"
