@@ -4,50 +4,47 @@ metadata:
   name: template
 spec:
   info:
-    title: Template
+    title: adc-template-july
+    source:
+      repo: https://github.com/lkysow/adc-template-july.git
+      sourceType: git
     version: 0.2.0
-    description:
-      tagline: Template
     actuationTool:
       flavor: Terraform
       version: ">= 1.3"
+    description: {}
+  content: {}
   interfaces:
     variables:
-    - name: tenant_project_number
-      description: Tenant project number for cloud resources.
-      varType: string
-      required: true
-    - name: tenant_project_id
-      description: Tenant project ID for cloud resources.
-      varType: string
-      required: true
-    - name: service_account_email
-      description: Service account email to grant project IAM role.
-      varType: string
-      required: true
-    - name: bucket_location
-      description: The location of the storage bucket.
-      varType: string
-      defaultValue: US
-    - name: storage_class
-      description: The Storage Class of the new bucket.
-      varType: string
-      defaultValue: MULTI_REGIONAL
-    - name: reasoning_engine_display_name
-      description: The display name of the Vertex AI Agent Engine
-      varType: string
-      defaultValue: agent-engine
-    - name: reasoning_engine_region
-      description: The region for the Vertex AI Agent Engine
-      varType: string
-      defaultValue: us-central1
+      - name: project_number
+        description: Tenant project number for cloud resources.
+        varType: string
+        required: true
+      - name: project_id
+        varType: string
+        required: true
+      - name: bsa_email
+        description: Borg Service account email to grant project IAM role.
+        varType: string
+        required: true
+      - name: bucket_location
+        description: The location of the storage bucket.
+        varType: string
+        required: true
+      - name: bucket_storage_class
+        description: The Storage Class of the new bucket.
+        varType: string
+        required: true
+      - name: reasoning_engine_region
+        description: The region for the Vertex AI Agent Engine.
+        varType: string
+        required: true
     outputs:
-    - name: bucket_name
-      description: The name of the created storage bucket
-    - name: bucket_url
-      description: The self-link URL of the created storage bucket
-    - name: agent_engine_name
-      description: The resource name of the Agent Engine
-    - name: agent_engine_id
-      description: The ID of the Agent Engine
-
+      - name: agent_engine_id
+        description: The ID of the Agent Engine.
+      - name: agent_engine_name
+        description: The resource name of the Agent Engine.
+      - name: bucket_name
+        description: The name of the created GCS bucket.
+      - name: bucket_url
+        description: The URI of the created GCS bucket.
