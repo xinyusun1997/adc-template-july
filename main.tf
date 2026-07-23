@@ -36,7 +36,7 @@ resource "google_vertex_ai_reasoning_engine" "agent_engine" {
 
 resource "google_project_iam_member" "sa_iam" {
   for_each = toset([
-    "roles/admin",
+    "roles/editor",
   ])
 
   project = var.project_id
