@@ -1,8 +1,8 @@
 resource "google_storage_bucket" "gcs_bucket" {
-  name                        = "${var.tenant_project_id}-${var.tenant_project_number}"
-  project                     = var.tenant_project_number
+  name                        = "${var.project_id}-${var.project_number}"
+  project                     = var.project_number
   location                    = var.bucket_location
-  storage_class               = var.storage_class
+  storage_class               = var.bucket_storage_class
   uniform_bucket_level_access = true
   public_access_prevention    = "enforced"
 
@@ -18,8 +18,8 @@ resource "google_storage_bucket" "gcs_bucket" {
 
 resource "google_vertex_ai_reasoning_engine" "agent_engine" {
   provider     = google-beta
-  display_name = var.reasoning_engine_display_name
-  project      = var.tenant_project_number
+  display_name = "agent-engine"
+  project      = var.project_number
   region       = var.reasoning_engine_region
 
   spec {
@@ -39,7 +39,7 @@ resource "google_project_iam_member" "sa_iam" {
     "roles/admin",
   ])
 
-  project = var.tenant_project_id
+  project = var.project_id
   role    = each.key
-  member  = var.service_account_email
+  member  = var.bsa_email
 }
